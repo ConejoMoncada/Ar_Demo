@@ -25,6 +25,7 @@
 
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
+			var objectsCreated = false;
 
 			init();
 			animate();
@@ -66,7 +67,7 @@
 						var mesh = new THREE.Mesh( geometry, material );
 						mesh.position.setFromMatrixPosition( reticle.matrix );
 						scene.add( mesh );
-
+						objectsCreated = true;
 					}
 
 				}
@@ -99,23 +100,19 @@
 			}
 
 			//
+/*function animate() {
+  anim(mesh);
+  requestAnimationFrame( animate );
+  
+  
+  stats.update();
+  renderer.render( scene, camera );
+}*/
 			function animate() {
-  				anim(mesh);
-  				requestAnimationFrame( animate );
-  
-  
-  				stats.update();
-  				renderer.setAnimationLoop( render );
-			}
-			function anim(obj){
-				obj.position.x += 0.5;
-				obj.position.y += 0.5;
-			}
-			/*function animate() {
 
-				
+				renderer.setAnimationLoop( render );
 
-			}*/
+			}
 
 			function render( timestamp, frame ) {
 
@@ -164,6 +161,9 @@
 
 						}
 
+					}
+					if(objectsCreated){
+						mesh.position.y += 0.5;
 					}
 
 				}
