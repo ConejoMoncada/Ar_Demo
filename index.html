@@ -99,12 +99,23 @@
 			}
 
 			//
-
 			function animate() {
+  				anim(mesh);
+  				requestAnimationFrame( animate );
+  
+  
+  				stats.update();
+  				renderer.render( scene, camera );
+			}
+			function anim(obj){
+				obj.position.x += 0.5;
+				obj.position.y += 0.5;
+			}
+			/*function animate() {
 
 				renderer.setAnimationLoop( render );
 
-			}
+			}*/
 
 			function render( timestamp, frame ) {
 
