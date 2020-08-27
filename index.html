@@ -26,6 +26,7 @@
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
 			var objectsCreated = false;
+			var lastObj;
 
 			init();
 			animate();
@@ -68,6 +69,7 @@
 						mesh.position.setFromMatrixPosition( reticle.matrix );
 						scene.add( mesh );
 						objectsCreated = true;
+						lastObj = mesh;
 					}
 
 				}
@@ -163,7 +165,7 @@
 
 					}
 					if(objectsCreated){
-						mesh.position.y += 0.5;
+						lastObj.position.y += 0.5;
 					}
 
 				}
