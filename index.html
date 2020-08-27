@@ -105,7 +105,7 @@
   
   
   				stats.update();
-  				renderer.render( scene, camera );
+  				renderer.setAnimationLoop( render );
 			}
 			function anim(obj){
 				obj.position.x += 0.5;
@@ -113,7 +113,7 @@
 			}
 			/*function animate() {
 
-				renderer.setAnimationLoop( render );
+				
 
 			}*/
 
