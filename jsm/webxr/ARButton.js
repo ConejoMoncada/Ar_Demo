@@ -52,7 +52,7 @@ var ARButton = {
 
 			button.onmouseleave = function () {
 
-				button.style.opacity = '0.5';
+				button.style.opacity = '0.8';
 
 			};
 
@@ -103,7 +103,7 @@ var ARButton = {
 			element.style.border = '1px solid #fff';
 			element.style.borderRadius = '4px';
 			element.style.background = 'rgba(0,0,0,0.1)';
-			element.style.color = '#fff';
+			element.style.color = '#fffff';
 			element.style.font = 'normal 13px sans-serif';
 			element.style.textAlign = 'center';
 			element.style.opacity = '0.5';
