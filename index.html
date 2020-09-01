@@ -27,6 +27,7 @@
 			var hitTestSourceRequested = false;
 			var objectsCreated = false;
 			var lastObj;
+			var selected;
 
 			init();
 			animate();
@@ -62,7 +63,13 @@
 
 				function onSelect() {
 
-					if ( reticle.visible ) {
+					raycaster.setFromCamera( mouse, camera );
+					var intersects = raycaster.intersectObjects( objetos );
+					
+					if(intersects.length > 0){
+						selected = intersects[0].object;
+						selected.material.color = 0x000000;
+					}else if ( reticle.visible ) {
 
 						var material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						var mesh = new THREE.Mesh( geometry, material );
