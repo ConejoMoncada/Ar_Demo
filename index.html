@@ -60,13 +60,22 @@
 				//
 
 				var geometry = new THREE.BoxBufferGeometry(0.1,0.1,0.1).translate( 0, 0.05, 0 );
+				function onMouseMove( event ) {
+
+					// calculate mouse position in normalized device coordinates
+					// (-1 to +1) for both components
+
+					mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+					mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+				}
 
 				function onSelect() {
 
 					raycaster.setFromCamera( mouse, camera );
 					var intersects = raycaster.intersectObjects( objetos );
 					
-					if(intersects.length > 0){
+					if(intersects.length > 1){
 						selected = intersects[0].object;
 						selected.material.color = 0x000000;
 					}else if ( reticle.visible ) {
@@ -171,7 +180,7 @@
 						}
 
 					}
-					if(objectsCreated){
+					if(objectsCreated && lastObj != selected){
 						lastObj.position.z += 0.005;
 					}
 
