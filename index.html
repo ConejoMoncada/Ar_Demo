@@ -73,7 +73,7 @@
 				function onSelect() {
 
 					raycaster.setFromCamera( mouse, camera );
-					var intersects = raycaster.intersectObjects( objetos );
+					var intersects = raycaster.intersectObjects(scene.children);
 					
 					if(intersects.length > 1){
 						selected = intersects[0].object;
