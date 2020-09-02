@@ -79,7 +79,7 @@
 						selected = intersects[0].object;
 						selected.material.color = 0x000000;
 					}
-					if ( reticle.visible && selected == null) {
+					else if ( reticle.visible) {
 
 						var material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						var mesh = new THREE.Mesh( geometry, material );
