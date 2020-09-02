@@ -94,7 +94,7 @@
 
 				controller = renderer.xr.getController( 0 );
 				controller.addEventListener( 'select', onSelect );
-				window.addEventListener( 'mousemove', onMouseMove, false );
+				controller.addEventListener( 'mousemove', onMouseMove, false );
 				scene.add( controller );
 
 				reticle = new THREE.Mesh(
