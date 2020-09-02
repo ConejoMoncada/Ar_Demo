@@ -71,6 +71,7 @@
 				}
 
 				function onSelect() {
+					alert("event");
 					slected = null;
 					raycaster.setFromCamera( mouse, camera );
 					var intersects = raycaster.intersectObjects(scene.children);
