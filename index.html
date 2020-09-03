@@ -61,7 +61,7 @@
 				//
 
 				var geometry = new THREE.BoxBufferGeometry(0.1,0.1,0.1).translate( 0, 0.05, 0 );
-				function onMouseMove( event ) {
+				/*function onMouseMove( event ) {
 
 					// calculate mouse position in normalized device coordinates
 					// (-1 to +1) for both components
@@ -69,7 +69,7 @@
 					mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 					mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-				}
+				}*/
 
 				function onSelect() {
 
@@ -81,12 +81,13 @@
 
 					//3. compute intersections
 					var intersects = raycaster.intersectObjects( scene.children );
+					alert("ray cast");
 					if(intersects.length > 0){
 						alert("intersected " + intersects.length + "objects");
 						selected = intersects[0].object;
 						selected.material.color = 0x000000;
 					}
-					//alert("Ray cast");
+					alert("Reticle check");
 					
 					if ( reticle.visible) {
 
@@ -103,7 +104,7 @@
     			//renderer.domElement.addEventListener( 'click', raycast, false );
 				controller = renderer.xr.getController( 0 );
 				controller.addEventListener( 'select', onSelect );
-				controller.addEventListener( 'mousemove', onMouseMove, false );
+				//controller.addEventListener( 'mousemove', onMouseMove, false );
 				
 				scene.add( controller );
 
