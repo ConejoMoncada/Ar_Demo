@@ -81,13 +81,11 @@
 
 					//3. compute intersections
 					var intersects = raycaster.intersectObjects( scene.children );
-					alert("ray cast");
 					if(intersects.length > 0){
 						alert("intersected " + intersects.length + "objects");
 						selected = intersects[0].object;
 						selected.material.color = 0x000000;
 					}
-					alert("Reticle check");
 					
 					if ( reticle.visible) {
 
