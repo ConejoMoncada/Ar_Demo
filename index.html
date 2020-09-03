@@ -71,16 +71,7 @@
 				}
 
 				function onSelect() {
-					alert("event");
-					slected = null;
-					raycaster.setFromCamera( mouse, camera );
-					var intersects = raycaster.intersectObjects(scene.children);
-					alert("ray cast");
-					if(intersects.length > 0){
-						alert("intersected " + intersects.length + "objects");
-						selected = intersects[0].object;
-						selected.material.color = 0x000000;
-					}
+					
 					if ( reticle.visible) {
 
 						var material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
@@ -96,6 +87,8 @@
 				controller = renderer.xr.getController( 0 );
 				controller.addEventListener( 'select', onSelect );
 				controller.addEventListener( 'mousemove', onMouseMove, false );
+				raycaster = new THREE.Raycaster();
+    			renderer.domElement.addEventListener( 'click', raycast, false );
 				scene.add( controller );
 
 				reticle = new THREE.Mesh(
@@ -109,6 +102,39 @@
 				//
 
 				window.addEventListener( 'resize', onWindowResize, false );
+
+				function raycast ( e ) {
+
+					//1. sets the mouse position with a coordinate system where the center
+					//   of the screen is the origin
+					mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
+					mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+
+					//2. set the picking ray from the camera position and mouse coordinates
+					raycaster.setFromCamera( mouse, camera );    
+
+					//3. compute intersections
+					var intersects = raycaster.intersectObjects( scene.children );
+					if(intersects.length > 0){
+						alert("intersected " + intersects.length + "objects");
+						selected = intersects[0].object;
+						selected.material.color = 0x000000;
+					}
+
+					/*for ( var i = 0; i < intersects.length; i++ ) {
+						console.log( intersects[ i ] ); 
+						/*
+							An intersection has the following properties :
+								- object : intersected object (THREE.Mesh)
+								- distance : distance from camera to intersection (number)
+								- face : intersected face (THREE.Face3)
+								- faceIndex : intersected face index (number)
+								- point : intersection point (THREE.Vector3)
+								- uv : intersection point in the object's UV coordinates (THREE.Vector2)
+						
+					}*/
+
+				}
 
 			}
 
